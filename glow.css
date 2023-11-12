@@ -8,6 +8,10 @@ body {
     color: #fff;
     text-align: center;
     animation: glow 1s ease-in-out infinite alternate;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @keyframes glow {
