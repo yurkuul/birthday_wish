@@ -73,3 +73,28 @@ class Firework {
         }
     }
 }
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    fireworks.forEach((firework, index) => {
+        firework.update();
+        firework.draw();
+
+        if (firework.lifespan <= 0 && firework.particles.every(p => p.alpha <= 0)) {
+            fireworks.splice(index, 1);
+        }
+    });
+
+    // Increased frequency of fireworks
+    if (Math.random() < 0.03) {
+        const x = Math.random() * canvas.width;
+        const colors = ["purple", "red", "green"];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = Math.random() * 3 + 2; // Random size between 2 and 5
+        fireworks.push(new Firework(x, canvas.height, color, size));
+    }
+}
