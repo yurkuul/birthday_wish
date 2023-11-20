@@ -1,3 +1,9 @@
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 class Particle {
     constructor(x, y, color, size) {
         this.x = x;
@@ -74,6 +80,8 @@ class Firework {
     }
 }
 
+let fireworks = [];
+
 function animate() {
     requestAnimationFrame(animate);
 
@@ -98,3 +106,5 @@ function animate() {
         fireworks.push(new Firework(x, canvas.height, color, size));
     }
 }
+
+animate();
