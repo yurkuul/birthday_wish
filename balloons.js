@@ -21,3 +21,29 @@ function getRandomStyles() {
         animation: float ${dur}s ease-in infinite;
   `;
 }
+
+function createBalloons(num) {
+    console.log("hehe");
+    for (var i = 0; i < num; i++) {
+        var balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.cssText = getRandomStyles(); // Apply styles directly
+        balloonContainer.append(balloon);
+    }
+}
+
+function removeBalloons() {
+    balloonContainer.style.opacity = 0;
+    setTimeout(() => {
+        balloonContainer.remove();
+    }, 500);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Your code here
+    document.querySelector('.button').addEventListener('click', function () {
+        if (balloonContainer.children.length === 0) {
+            createBalloons(30);
+        }
+    });
+});
